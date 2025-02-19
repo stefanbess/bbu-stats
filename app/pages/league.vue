@@ -1,11 +1,11 @@
 <template>    
-    <h1>Liga</h1>
+    <Headline name="Liga Statistiken" />
 </template>
 
 <script setup lang="ts">
     useHead({
         title: 'Liga'
-    })
+    });
 </script>
 
 <style lang="css" scoped>

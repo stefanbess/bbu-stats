@@ -11,8 +11,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/devtools": "^2.1.0",
     "@nuxt/image": "^1.9.0",
     "@nuxt/ui": "^2.21.0",
+    "@nuxtjs/supabase": "^1.4.6",
     "@vercel/speed-insights": "^1.2.0",
     "@vueuse/core": "^12.7.0",
     "@vueuse/nuxt": "^12.7.0",

@@ -1,11 +1,11 @@
 <template>    
-    <h1>Start</h1>
+    <Headline name="Startseite" />
 </template>
 
 <script setup lang="ts">
     useHead({
-        title: 'Übersicht'
-    })
+        title: 'Startseite'
+    });
 </script>
 
 <style lang="css" scoped>

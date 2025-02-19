@@ -1,11 +1,11 @@
 <template>    
-    <h1>Spieler</h1>
+    <Headline name="Spieler Statistiken" />
 </template>
 
 <script setup lang="ts">
     useHead({
         title: 'Spieler'
-    })
+    });
 </script>
 
 <style lang="css" scoped>

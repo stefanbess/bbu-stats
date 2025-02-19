@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   pages: true,
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/image'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
   colorMode: {
     preference: 'light',
     fallback: 'light'
@@ -17,9 +17,13 @@ export default defineNuxtConfig({
     exposeConfig: true,
     viewer: true
   },
+  supabase: {
+    redirect: true,
+  },
   runtimeConfig: {
     public: {
-      version: pkg.version
+      version: pkg.version,
+      baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
     }
   }
 })

@@ -49,10 +49,8 @@
 <style lang="css">
     body {
         font-family: 'Roboto';
-        /*@apply bg-[#E9F3FF]*/
     }
     main{
-        height: 100vh;
-        @apply bg-white
+        @apply bg-white;
     }
 </style>

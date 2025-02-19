@@ -3,15 +3,26 @@
         <NuxtLink to="/">
             <NuxtImg src="/BBU_logo_klein.jpg" width="51" height="51">Bowling Bayern</NuxtImg>
         </NuxtLink>
-        <nav>
-            <NuxtLink to='/' :class="['menu-link', { active: isActive('index') }]">Home</NuxtLink>
+        <div class="text-white" v-if="!showNav">Willkommen auf der BBU Statistikseite</div>
+        <nav v-if="showNav">
+            <NuxtLink to='/' :class="['menu-link', { active: isActive('index') }]">Startseite</NuxtLink>
             <NuxtLink to='/player' :class="['menu-link', { active: isActive('player') }]">Spieler</NuxtLink>            
             <NuxtLink to='/league' :class="['menu-link', { active: isActive('league') }]">Liga</NuxtLink>            
             <NuxtLink to='/team' :class="['menu-link', { active: isActive('team') }]">Team</NuxtLink>            
         </nav>
-        <div>
+        <div v-if="showNav">
             <UDropdown :items="items" :ui="{ item: { disabled: 'cursor-text selected-text '}, width: 'w-64'}">
-                <UAvatar :src="url" alt="Avatar" />
+                <UAvatar icon="i-heroicons-bars-3" size="sm" :ui="{
+                    background: 'bg-white',
+                    text: 'bg-[#015092]'
+                }"/>
+
+                <template #account="{ item }">
+                    <div class="text-left">
+                        <p>Eingeloggt als:</p>
+                        <p class="font-medium text-gray-900 dark:text-white">{{ user.email }}</p>
+                    </div>
+                </template>
             </UDropdown>
         </div>
     </header>
@@ -22,9 +33,16 @@
     const route = useRoute();
 
     const version = useRuntimeConfig().public.version;
+    const supabase = useSupabaseClient();
+    const user = useSupabaseUser();
+    const showNav = ref(false);    
 
     const items = [
         [
+            {
+                slot: 'account',
+                disabled: true
+            },
             {
                 label: `Version: ${version}`,
                 disabled: true
@@ -35,7 +53,8 @@
                 label: 'Logout',
                 icon: 'i-heroicons-arrow-left-on-rectangle',
                 click: async () => {
-                    return navigateTo('/login')
+                    await supabase.auth.signOut();
+                    return navigateTo('/login');
                 }
             }
         ]
@@ -46,6 +65,10 @@
     const isActive = (name) => {
         return route.name === name;
     };
+
+    watch(user, ()=>{
+        user.value ? showNav.value = true : showNav.value = false;
+    }, {immediate: true})
 </script>
 
 <style scoped lang="css">
