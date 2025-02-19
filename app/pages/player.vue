@@ -1,0 +1,11 @@
+<template>    
+    <h1>Spieler</h1>
+</template>
+
+<script setup lang="ts">
+
+</script>
+
+<style lang="css" scoped>
+
+</style>
