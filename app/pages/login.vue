@@ -13,7 +13,11 @@
     </UCard>
   </template>
 
-<script setup>
+<script setup lang="ts">
+    useHead({
+        title: 'Login'
+    });
+
     const success = ref(false);
     const email = ref('');
     const password = ref('');
