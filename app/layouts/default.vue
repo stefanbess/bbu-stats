@@ -1,4 +1,5 @@
 <template>
+    <SpeedInsights />
     <div class="container mx-auto max-w-6xl">
         <AppHeader />
         <main>
@@ -8,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+    import { SpeedInsights } from "@vercel/speed-insights/nuxt";
+
     const reqUrl = useRequestURL();
     const content = reqUrl.href;
     useHead({
