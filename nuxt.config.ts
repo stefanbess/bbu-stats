@@ -8,7 +8,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   pages: true,
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
+  modules: [
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    '@nuxt/image',
+    '@nuxtjs/supabase',
+    '@nuxthub/core'
+  ],
   colorMode: {
     preference: 'light',
     fallback: 'light'
@@ -24,6 +30,11 @@ export default defineNuxtConfig({
     public: {
       version: pkg.version,
       baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
+    }
+  },
+  nitro: {
+    experimental: {
+      openAPI: true
     }
   }
 })
