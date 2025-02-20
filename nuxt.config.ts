@@ -13,12 +13,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/image',
     '@nuxtjs/supabase',
-    '@nuxthub/core',
-    [
-      'nuxt-cloudflare-analytics', {
-        token: 'iu2v8QyZeakh4Yq0qZpEnTmKME15rWlMcD0q5OOT'
-      },
-    ]
+    '@nuxthub/core'
   ],
   colorMode: {
     preference: 'light',
